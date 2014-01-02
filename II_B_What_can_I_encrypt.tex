@@ -1,25 +1,25 @@
 %------------------------------------------------
 \begin{frame}
-\frametitle{Le chiffrement}
+\frametitle{Encryption}
 \justifying{
-\begin{block}{En local - ses données}
+\begin{block}{Locally - your data}
 \begin{itemize}
-\item Son disque dur
-\item Sa clef USB
-\item Son smartphone
+\item Hard disk
+\item USB Key
+\item Smartphone
 \end{itemize}
 \end{block}
 
-\begin{block}{En réseau - ses communications}
+\begin{block}{Network - Communications}
 \begin{itemize}
-\item Https : utilisation de l'extension HTTPSEveryWhere pour Firefox  
-\item Ses e-mails : utilisation de GPG via Enigmail pour Thunderbird
-\item Sa connexion : utiliser un VPN, SSH, la clef "WIFI".
+\item Https : HTTPSEveryWhere for Firefox  
+\item E-mails : GPG with Enigmail for Thunderbird
+\item Connexion : VPN, SSH, TOR...
 \end{itemize}
 \end{block}
 
 \begin{block}{}
-$\Rightarrow$ \`A chaque "usage", il y a une solution de chiffrement possible.
+$\Rightarrow$ Each "use", there is an encryption solution.
 \end{block}
 }
 \end{frame}
@@ -27,19 +27,19 @@ $\Rightarrow$ \`A chaque "usage", il y a une solution de chiffrement possible.
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Les mails - PGP, GPG?}
+\frametitle{Emails - PGP, GPG?}
 \begin{block}{PGP}
 \justifying{
-Pretty Good Privacy - PGP est un logiciel de chiffrement et de déchiffrement cryptographique, créé par l'américain Phil Zimmermann en 1991.
+Pretty Good Privacy - PGP is an encryption software created by the American Phil Zimmermann in 1991.
 }
 \end{block}
 \begin{block}{OpenPGP}
 \justifying{
-Ce standard décrit le format des messages, signatures ou certificats que peuvent s'envoyer des logiciels comme GNU Privacy Guard. Ce n'est donc pas un logiciel, mais un format pour l'échange sécurisé de données, qui doit son nom au programme historique Pretty Good Privacy (PGP).
+This standard describes the format of messages, signatures or certificates that can send software such as GNU Privacy Guard. It is therefore not a software but a format for the secure exchange of data, which owes its name to the historic program Pretty Good Privacy (PGP).
 }
 \end{block}
 \begin{block}{GnuPG}
-\justifying{GnuPG (ou GPG, de l'anglais GNU Privacy Guard) est l'implémentation GNU du standard OpenPGP.}
+\justifying{GnuPG (GNU Privacy Guard) is the free software.}
 \end{block}
 \end{frame}
 
@@ -47,25 +47,31 @@ Ce standard décrit le format des messages, signatures ou certificats que peuven
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Chiffrer son disque dur}
-\begin{block}{Logiciels intégrés aux systèmes d'exploitations}
+\frametitle{Harddisk encryption}
+\begin{block}{Software integrated in operating systems}
 \begin{itemize}
-\item Windows 7/8 : Bitlocker (Backdor)
+\item Windows 7/8 : Bitlocker (Backdoor)
 \item MacOS : FileVault
 \item GNU/Linux : Encfs...
 \end{itemize}
-Peut-on faire confiance à autre chose que du logiciel libre ?
+Can you trust closed source software ?
 \end{block}
 
-\begin{block}{Indépendament du système d'exploitation}
-$\Rightarrow$ Le logiciel TrueCrypt. Pour une clef USB/un disque dur externe.
+\begin{block}{Independently of the operating system}
+$\Rightarrow$ TrueCrypt. For a USB key/an external hard drive.
 \end{block}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{L'audit de TrueCrypt}
+\frametitle{TrueCrypt audit}
 \begin{center}
- \includegraphics[scale=0.45] {./materials/truecryptaudit.jpg} 
+\includegraphics[scale=0.45] {./materials/truecryptaudit.jpg} 
 \end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Encryption and privacy}
+\huge{Encryption is a need for privacy and allow data protection.}
 \end{frame}
