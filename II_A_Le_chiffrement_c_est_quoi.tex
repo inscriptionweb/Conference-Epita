@@ -1,49 +1,49 @@
 %------------------------------------------------
 \begin{frame}
-\frametitle{Définitions - cryptage, crypter, chiffrement ?}
+\frametitle{Definition - cryptage, encrypt, encryption ?}
 
-\begin{block}{Le chiffrement}
+\begin{block}{Encryption}
 \justifying{
-Le chiffrement consiste à chiffrer un document/un fichier à l’aide d’une clef de chiffrement. 
-L’opération inverse étant le déchiffrement. 
+Encryption is to encrypt a document / file using an encryption key.
+The reverse operation is decryption.
 }
 \end{block}
-\begin{block}{Le cryptage}
+\begin{block}{Cryptage}
 \justifying{
-Le terme « cryptage » est un anglicisme, tiré de l’anglais encryption. 
-Le décryptage existe : il s’agit de "casser" un document chiffré lorsqu’on n’en a pas la clef.
+Term « cryptage » is derived from the English encryption and does not exist in French.
+Decryption is the fact of breaking the encryption when the private key is unknown.
 }
 \end{block}
-\begin{block}{La cryptographie}
+\begin{block}{Cryptography}
 \justifying{
-La science quant-à elle s’appelle  la "cryptographie".
+Science is called Cryptography.
 }
 \end{block}
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Le chiffrement, comment ça se passe?}
+\frametitle{Encryption, how does it work?}
 
-\begin{block}{Le chiffrement symétrique}
+\begin{block}{Symetric Encryption}
 \justifying{
-Cela consiste à chiffrer un message avec la même clef que celle qui sera utilisé pour le déchiffrement. 
+This involves encrypting a message with the same key that will be used for decryption process.
 \\
-Exemple : le code de César avec un décalage de lettres. A->C, B->D etc.
+Sample : Caesar code,  with an offset letter. A->C, B->D etc.
 \\
 Nous venons en paix ->  Pqwu xgpqpu gp rckz
 \\
-On applique le processus inverse pour avoir le message.
+The reverse process is applied to get the message.
 }
 \end{block}
 
-\begin{block}{Une clef de chiffrement c'est quoi?}
+\begin{block}{What is an encryption key?}
 \justifying{
 
-Une clef s'appelle une clef car elle ouvre/ferme le cadenas qu'est l'algorithme de chiffrement utilisé.
-\begin{itemize}
-\item Ici, l'algorithme est dans la notion de décalage.
-\item La clef est le nombre de lettre décallées (ici deux lettres).
+A key is called so because it opens / closes the padlock that is the used encryption algorithm.
+\begin {itemize}
+\item Here, the algorithm is the offset.
+\item The key is the number of offset of letter (here two letters).
 \end{itemize}
 }
 \end{block}
@@ -52,59 +52,59 @@ Une clef s'appelle une clef car elle ouvre/ferme le cadenas qu'est l'algorithme 
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Le chiffrement asymétrique 1/2}
+\frametitle{Asymetric Encryption 1/2}
 
-\begin{block}{Clef publique - clef privée}
+\begin{block}{Public key - Private key}
 \justifying{
 
-Le chiffrement asymétrique repose sur le couple clef publique - clef privée.
-\\$\Rightarrow$  Ce qu'il faut comprendre/retenir : 
+Asymetric Encryption is based on the pair public key - private key.
+\\$\Rightarrow$ What you need to know: 
 \begin{itemize}
-\item Ma clef privée est secrète.
-\item Ma clef publique est distribuée à tous.
+\item My private key is... private and my own.
+\item My public key is shared with everyone.
 \end{itemize}
 }
 \end{block}
-
-\begin{block}{L'algorithme de chiffrement}
+	
+\begin{block}{The encryption algorithm}
 \justifying{
-L'algorithme de chiffrement est bien plus complexe que le fait de décaler des lettres ; il repose sur des notions mathématiques (nombre premiers...)
+The encryption algorithm is more complexe than the fact of shifting letters ; it is based on mathematical concepts (first number ...)
 }
 \end{block}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Le chiffrement asymétrique 2/2}
+\frametitle{Asymetric Encryption 2/2}
 
-\begin{block}{Le chiffrement}
-Avec la clef publique de mon correspondant, je chiffre  un fichier.
-\\$\Rightarrow$ Le fichier ne peut plus être déchiffré que par la personne qui possède la clef privée correspondant à la clef publique que j'ai utilisée (donc mon correspondant).
+\begin{block}{Encryption}
+With the public key of my correspondent, I encrypt a file.
+\\$\Rightarrow$ The file can only be decrypted by the person who possesses the private key corresponding to the public key that I used (and therefore my correspondent).
 \end{block}
 
-\begin{block}{Le déchiffrement}
-Avec sa clef privée,  mon correspondant déchiffre le fichier.
+\begin{block}{Decryption}
+With its private key, my correspondent decrypts the file.
 \\
-$\Rightarrow$ Il peut alors lire le message.
+$\Rightarrow$ He can then read the message.
 \end{block}
 
-\begin{block}{Cas concret}
-Le chiffrement de ses mails avec PGP.
+\begin{block}{Concret case}
+Mail Encryption with PGP.
 \end{block}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Bob envoit un message à Alice}
+\frametitle{Bob send a message to Alice}
 \begin{center}
-\includegraphics[scale=0.4] {./materials/questions.jpg} 
+\includegraphics[scale=0.3] {./materials/Alice_et_bob.png} 
 \end{center}
 \end{frame}
 
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\Huge{\centerline{Pourquoi chiffrer?}}
+\Huge{\centerline{Why encryption?}}
 \begin{center}
 \includegraphics[scale=0.4] {./materials/cryptography.jpg} 
 \end{center}
@@ -112,40 +112,40 @@ Le chiffrement de ses mails avec PGP.
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Chiffrer - Les arguments contre}
+\frametitle{Encrypt - The arguments against}
 
 \justifying{
-\begin{block}{Personne ne le fait...}
-FAUX. Sans le savoir, vous le faîtes tous les jours.
+\begin{block}{Nobody does...}
+FALSE. Without knowing it, you do it every day.
 \\
-Exemple 1: "le cadenas" quand on se connecte
-\\  Exemple 2: La clef du Wifi.
+Sample 1: "padlock" when connecting (https)
+\\ Sample 2: Wifi key.
 \end{block}
 
-\begin{block}{Je n'ai rien à cacher...}
-FAUX. Qui accepterait que le facteur lise son courrier médical ?
+\begin{block}{Nothing to hide...}
+FALSE. Who would accept the postman read his medical post ?
 \end{block}
 
-\begin{block}{Le chiffrement, c'est pour les pédonazis de l'Internet...}
-FAUX. Cas des journalistes/blogueurs dissidents qui dénoncent des dictatures...
+\begin{block}{Encryption, it's for the pedo-nazi...}
+FALSE. For journalists / bloggers dissidents who are denouncing dictatorships...
 \end{block}
 }
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Chiffrer - Les arguments pour}
+\frametitle{Encrypt - The arguments for}
 
-\begin{block}{Le chiffrement, ce n'est pas si compliqué}
-Ce n'est pas plus compliqué que d'utiliser un "logiciel" ; i faut comprendre le principe et c'est du clickodrome.
+\begin{block}{Encryption, it's not so complicated}
+It is not more complicated than using a "software". You just have to understand the principle.
 \end{block}
 
-\begin{block}{Protection et sécurité}
-Mes données personnelles, sensibles sont protégées. Cf. PRISM, NSA...
+\begin{block}{Protection and security}
+My personnal data are safe Cf. PRISM, NSA...
 \end{block}
 
-\begin{block}{Confidentialité}
-Seule la personne à qui est destiné le "message" est en mesure de le lire.
+\begin{block}{Privacy}
+Only the person for who the "message" is, is able to read it.
 \end{block}
 
 \end{frame}
@@ -155,47 +155,47 @@ Seule la personne à qui est destiné le "message" est en mesure de le lire.
 \frametitle{Edward Snowden}
 \justifying{
 Encryption works. Properly implemented strong crypto systems are one of the few things that you can rely on.
+}
 \begin{center}
 \includegraphics[scale=0.4] {./materials/snowden.jpg} 
 \end{center}
-Le chiffrement fonctionne. Correctement mis en œuvre, les systèmes cryptographiques forts sont l'une des rares choses sur lesquelles vous pouvez compter.
-}
+
 \end{frame}
 
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Limites du chiffrement}
-\begin{block}{Ce qui est chiffré aujourd'hui pourra être déchiffré demain}
+\frametitle{Encryption limit}
+\begin{block}{Which is encrypted can be decrypted today tomorrow}
 \justifying{
-Les ordinateurs de demain pourront permettre de décrypter les données chiffrées aujourd'hui.
+Tomorrow's computers will allow to decrypt the encrypted data today.
 }
 \end{block}
 
-\begin{block}{Si on perd la clef}
-On n'a plus accès aux données.
+\begin{block}{It the private key is lost}
+We no longer have access to data.
 \end{block}
 
-\begin{block}{Métadonnées, graphe social}
+\begin{block}{Metadata, social graph}
 \justifying{
-\textbf{PGP ne protège pas contre l'analyse des métadonnée (serveurs de transit, adresses, headers, sujet).}
-Ne pas oublier de nettoyer les métas-données des fichiers (tag EXIF des photos, documents de bureautiques avec le suivi des modifications).
-DNS, cas du tracking Internet...}
+\textbf{PGP does not protect against the analysis of metadata (servers transit, addresses, headers, subject).}
+Do not forget to clean the meta-data files (EXIF tag photos, office documents with tracked changes).
+DNS... Case of tracking Internet ...}
 \end{block}
 
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Le chiffrement et la loi}
+\frametitle{Law and encryption}
 \justifying{
-En France, la loi considère donc que l’utilisation de moyens de cryptologie est libre (LCEN article 30-1) et il n'y a donc, actuellement pas de limite à la taille de la clef de chiffrement que l'on peut utiliser.
+In France, the law therefore considers that the use of cryptology is free (LCEN Article 30-1) and there is therefore now no limit to the size of the encryption key that can be used .
 \\~\\
-En cas de perquisition,le refus de remise de la clef de chiffrement peut entraîner 3 ans d’emprisonnement ainsi que 45000\euro{} d’amende.
+In case of search, the refusal of submission of the encryption key may result in 3 years imprisonment and 45000\euro{}.
 \\~\\
-Cette peine est aggravée dans le cas où le chiffrement a été utilisé pour commettre un délit. 
+This penalty is increased if Encryption was used to commit a crime.
 \\~\\
-Il est donc recommandé de donner la clef de déchiffrement, sauf dans le cas où les données déchiffrées entrainerait une procédure judiciaire dont la peine finale serait supérieure à celle de l'entrave à l'enquête judiciaire.
+It is therefore recommended to give the decryption key, except in the case where the decrypted data would result in a judicial proceeding in which the final sentence would be greater than the interference with the judicial investigation.
 }
 \end{frame}
 
