@@ -1,6 +1,6 @@
 %--------------------------------------------------
 \begin{frame}
-\frametitle{Encrypt your connexions : SSL/TLS}
+\frametitle{Encryption for connexions : SSL/TLS}
 \begin{itemize}
 \item Session layer based, affect application layer (TFP, HTTP, SMTP, IMAP, POP
 , DNS, RTMP ...)
@@ -17,7 +17,7 @@ with the SSL observatory ON.
 
 %--------------------------------------------------
 \begin{frame}
-\frametitle{Encrypt chat sessions : OTR}
+\frametitle{Encryption for chat sessions : OTR}
 \begin{block}{OTR : Off-the-Record Messaging}
 \begin{itemize}
 \item Diffie-Hellman key exchange
@@ -29,4 +29,57 @@ with the SSL observatory ON.
 Bob cannot prove that Alice generated the MAC.
 Install Pidgin (cross-plateform) with plugin (available from the OTR homepage)
 and start playing.
+\end{frame}
+%----------------------------------------------------
+\begin{frame}
+\frametitle{Encryption for disk}
+Many possibilities, but full disk encryption is advised in case you really care
+about privacy. For this purpose you have a plethora of choice.
+\begin{itemize}
+\item Stacked filesystem encryption (eCryptfs, EncFs, disk utility ...)
+\item Disk encryption (dm-crypt, GELI, FileVault, DiskCryptor, trueCrypt ...)
+\end{itemize}
+\begin{block}{Case study : Plain dm-crypt}
+\begin{itemize}
+\item full disk encryption
+\item bootloader and key on external device
+\end{itemize}
+\end{block}
+(can also be done with Diskcryptor)
+\end{frame}
+%----------------------------------------------------
+\begin{frame}
+\frametitle{Encryption for smartphone}
+\begin{block}{Android}
+\begin{itemize}
+\item Chatsecure (Facebook chat, GTalk, Jabber) [OTR Messaging]
+\item Textsecure (SMS)
+\item LUKS Manager (ROOT requiered)
+\end{itemize}
+\end{block}
+\begin{block}{iOS}
+\begin{itemize}
+\item Chatsecure (Facebook chat, GTalk, Jabber) [OTR Messaging]
+\item FDE available by default, bypass techniques available, proprietary
+built system...\\ (More details : iPhone Forensic, O'Reilly)
+\end{itemize}
+\end{block}
+\end{frame}
+%----------------------------------------------------
+\begin{frame}
+\frametitle{Encryption for files}
+\begin{block}{Mails : Use GPG}
+\begin{itemize}
+\item create your keys
+\item share your public key
+\item enter the \sout{matrix} Web Of Trust (WOT)
+\item encrypt/sign your message and send it.
+\item receive mails too.
+\end{itemize}
+\end{block}
+\begin{block}{Files}
+Basically you can do the same with 'regular file'...
+Take care to not store keys near encrypted files, prefer symetrical encryption
+if files will not be shared.
+\end{block}
 \end{frame}
