@@ -1,4 +1,32 @@
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 \begin{frame}
+\frametitle{Encrypt your connexions : SSL/TLS}
+\begin{itemize}
+\item Session layer based, affect application layer (TFP, HTTP, SMTP, IMAP, POP
+, DNS, RTMP ...)
+\item Prefer using TLS over SSL when you have choice.
+\item Asymetrical encryption, forward secrecy (Diffie-Hellman).
+\end{itemize}
 
+Only use up to date browser in order to have the correct fingerprint cached
+on your computer and avoid MITM attack.
+If your browser does not have a certificate pinning system install
+certificate patrol (assuming your first connection is safe) or HTTPS everywhere
+with the SSL observatory ON.
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Encrypt chat sessions : OTR}
+\begin{block}{OTR : Off-the-Record Messaging}
+\begin{itemize}
+\item Diffie-Hellman key exchange
+\item off-the-record conversation
+\item repudiable authentication by using message authentication codes.
+\\(authentication ON | digital signature OFF)
+\end{itemize}
+\end{block}
+Bob cannot prove that Alice generated the MAC.
+Install Pidgin (cross-plateform) with plugin (available from the OTR homepage)
+and start playing.
 \end{frame}
