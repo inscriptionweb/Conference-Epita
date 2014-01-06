@@ -1,21 +1,43 @@
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
-\Huge{TOR - The Onion Router}
+\frametitle{Onion routing principles}
+TODO: schema explicatif
 \end{center}
 \end{frame}
 
 
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------
 \begin{frame}
-\frametitle{Présentation du réseau TOR}
-Tor est un logiciel libre,
+\frametitle{TOR : The Onion Router}
+It's an open-source implementation of the principles we just saw supported by
+The Tor Project.
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./materials/septical_boy}
+\end{figure}
+\end{frame}
+%---------------------------------------------------
+\begin{frame}
+\frametitle{TOR : The Onion Router}
+\begin{block}{Pros}
 \begin{itemize}
-\item grâce auquel existe le réseau d'anonymisation Tor
-\item  soutenu par l'organisation The Tor Project.
+\item Hide you identity and location, prevents from eyesdropping.
+\item Hide you browsing habbits and act like a debrider on the informations that
+you're authorized to see.
+\item encrypt your (incom|outgo)ing traffic between nodes.
 \end{itemize}
-$\Rightarrow$ Techniquement, Tor nous permet de se connecter à des machines sur Internet via des relais. 
-\\$\Rightarrow$ Et cela de façon à ce qu'elles ne puissent pas identifier notre connexion (et donc de nous localiser).
+\end{block}
+\begin{block}{Cons}
+\begin{itemize}
+\item Slower connexion, forget about downloading big files, torrents
+(deanonymize effect) etc...
+\item Still vulnerable to some kind of analysis
+\\ (timing deduction or infection between applications).
+\item entry/exit nodes are vulnerables, no magic here.
+\\ (Partial solution if you setup an exit enclaving node)
+\end{itemize}
+\end{block}
+TOR is an anonymity tool, not a security one.
 \end{frame}
 
 
