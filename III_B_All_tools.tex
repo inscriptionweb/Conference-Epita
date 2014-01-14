@@ -2,7 +2,7 @@
 \begin{frame}
 \begin{center}
 \frametitle{Onion routing principles}
-TODO: schema explicatif
+\includegraphics[width=0.8\linewidth]{./materials/Tor_principles_Naam}
 \end{center}
 \end{frame}
 
@@ -22,7 +22,7 @@ The Tor Project.
 \begin{block}{Pros}
 \begin{itemize}
 \item Hide you identity and location, prevents from eyesdropping.
-\item Hide you browsing habbits and act like a debrider on the informations that
+\item Hide you browsing habits and act like a debrider on the informations that
 you're authorized to see.
 \item encrypt your (incom|outgo)ing traffic between nodes.
 \end{itemize}
@@ -66,12 +66,12 @@ from here :\\ https://github.com/micahflee/torbrowser-launcher
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{What is the tracking ?}
+\frametitle{What is the tracking?}
 
 \begin{block}{Tracking over the Internet}
 \begin{itemize}
 \justifying{
-\item websites, announcers use it to learn your browsing habbits.
+\item websites, announcers use it to learn your browsing habits.
 \item they save what website are you visiting, what do you like or not and
 what you buy.
 \item Data are processed in order to display the best ads that fit your
@@ -84,7 +84,7 @@ preferences.
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{What's the magic ?}
+\frametitle{What's the magic?}
 
 \justifying{
 \begin{block}{Ads and widget are spying you}
@@ -103,89 +103,102 @@ don't click on it, even if you are properly disconnected from Facebook.
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Want to test ? Try LightBeam (ex Collusion) with Firefox}
+\frametitle{Want to test? Try LightBeam (ex Collusion) with Firefox}
 That add-on allow you to see in real time which websites are tracking you
 and the inter-connexion between the actual website and others. Kind of weird
 sometime.
 \begin{center}
-\includegraphics[scale=0.3] {./materials/Collusion.png}
+\includegraphics[scale=0.3] {./materials/lightbeam}
 \end{center}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\begin{center}
-\Huge{Anomymat et extensions pour Firefox}
-\end{center}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Noscript}
-
-Bloque tous les trackers associés au site.
-
-\begin{center}
-
-\end{center}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Self destructing cookie}
-
-Suppression automatisée des cookies
-
-\begin{center}
-\includegraphics[scale=0.4] {./materials/selfdestructingcookie.png}
-\end{center}
+\frametitle{Firefox scripts : Ghostery}
+Block all trackers Bloque tous les trackers associés au site.\\
+\includegraphics[width=0.9\textwidth]{./materials/ghostery}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\begin{center}
-\Huge{Changer de moteur de recherche}
-\end{center}
-\end{frame}
+\frametitle{Firefox scripts : Self destructing cookie}
 
+\begin{columns}[c]
+\column{0.5\linewidth}
+Automatic cookie deletion techniques. Prevent tracking and spying.
+Possibility to setup a whitelist if you really want to keep cookie for some
+domains even if you're not currently using it.
+\column{0.5\linewidth}
+\includegraphics[width=\linewidth] {./materials/selfdestructingcookie.png}
+\end{columns}
+\end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\begin{center}
-\frametitle{Duckduckgo - Google tracks you. We don't.}
-
-\url{https://duckduckgo.com/}
+\frametitle{Firefox scripts : HTTPSEverywhere}
+Made by the electronic frontier fondation (EFF), it force the HTTPS when
+available on the website. If you have one, consider registering it for your
+visitors (see https://www.eff.org/https-everywhere/rulesets).
 \\
-\includegraphics[scale=0.4] {./materials/DuckDuckGo.jpg}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\begin{center}
-\Huge{Et pour plus de sécurité?}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{HTTPSEverywhere}
-
-Force le passage en https quand celui-ci est proposé par le site.
-
+Also, activate the SSL Observatory : it prevent from MITM attacks and more
+generally against corrupted certificates.
 \begin{center}
 \includegraphics[scale=0.4] {./materials/https-everywhere.jpg}
 \end{center}
 
 \end{frame}
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Certificate Patrol}
-Permet de valider les certificats d'un site (lié à https).
+\frametitle{Firefox scripts : Certificate Patrol}
+Does approximately the same thing than the SSLObservatory. Less transparent in
+everyday use.
 \begin{center}
 \includegraphics[scale=0.4] {./materials/CertificatePatrol.png}
 \end{center}
 \end{frame}
-
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Search engines}
+\begin{itemize}
+\item Duckduckgo (ddg.gg) personalizable interface for your needs.
+\item Ixquick/startpage (ixquick.com/startpage.com) more than one search engine
+begind, automatic proxy if you want to.
+\item binsearch (binsearch.info) search for binaries (newsgroups etc) that
+google is hidding from you.
+\end{itemize}
+\end{frame}
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Metadatas are evil}
+\begin{block}{Definition (http://dictionary.reference.com/browse/meta-data)}
+\begin{itemize}
+\item Data about data.
+\item information that is held as a description of stored data.
+\end{itemize}
+\end{block}
+\begin{block}{Examples}
+\begin{itemize}
+\item EXIF tags on photography (Date, cameras info, GPS coordinates...)
+\item data stored on documents like .doc(x)
+\item ...
+\end{itemize}
+\end{block}
+\end{frame}
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Solution? YES, partialy}
+There is a good tool to erase metadatas from a large spectrum of filetypes.
+It's called MAT (mat.boum.org).
+\begin{itemize}
+\item Reside in Tails, standalone package (Debian), Git repos.
+\item it has a GUI, no worry (can also be used in command line, don't
+ worry too).
+\end{itemize}
+Files support :
+\begin{itemize}
+\item Images : .png, JPEG (.jpg, .jpeg, …)
+\item Documents : .odt, .odx, .ods, …, .docx, .pptx, .xlsx, …, .pdf
+\item Tape ARchives (.tar, .tar.bz2, …)
+\item Media : .mp3, .mp2, .mp1, …, .ogg, …, .flac
+\item Torrent (.torrent)
+\end{itemize}
+\end{frame}
