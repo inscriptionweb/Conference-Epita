@@ -8,7 +8,7 @@
 \item Asymetrical encryption, forward secrecy (Diffie-Hellman).
 \end{itemize}
 
-Only use up to date browser in order to have the correct fingerprint cached
+Only use up to date browser in order to have the correct fingerprint caught
 on your computer and avoid MITM attack.
 If your browser does not have a certificate pinning system install
 certificate patrol (assuming your first connection is safe) or HTTPS everywhere
@@ -21,7 +21,7 @@ with the SSL observatory ON.
 \column{.6\textwidth}
 \begin{block}{With color}
 \begin{itemize}
-\item two person that never met agrees on the same keys
+\item two people that never met agrees on the same keys
 \item heavy use of one-way function
 \item Select a public color, then each part select a private secret one.
 \item each part mix private/public key and send it to the other.
@@ -43,7 +43,7 @@ arrive to the same final private color.
 \item work on prime modulus and generator of that modulus.
 \item $3^n mod 17 = X$ with $0 <= X <= 17$ hard to reverse when len(prime modulus)
 increase.
-\item so each part agree on a prime modulus (p) and a generator (g).
+\item so each part agrees on a prime modulus (p) and a generator (g).
 Then calculate $g^{secret} mod(p)=Mix$ and send it publicly.
 \item each part compute now $Mix^{secret} mod(p)=Key$
 \end{itemize}
@@ -121,7 +121,7 @@ TODO
 \end{block}
 \begin{block}{Files}
 Basically you can do the same with 'regular file'...
-Take care to not store keys near encrypted files, prefer symetrical encryption
+Make sure not to store keys near encrypted files, prefer symetrical encryption
 if files will not be shared.
 \end{block}
 \end{frame}
@@ -129,12 +129,12 @@ if files will not be shared.
 %----------------------------------------------------
 \begin{frame}
 \frametitle{Choosing a password : Diceware method}
-The diceware method allow you to construct very strength password with the
-following adventages :
+The diceware method allow you to construct very strong password with the
+following advantages :
 \begin{itemize}
 \item Very easy to remember
 \item strong passphrase with high entropy (~20char +)
-\item trully random; password is totally detached from user habits/knowledge
+\item truly random; password is totally detached from user habits/knowledge
 etc.
 \end{itemize}
 \begin{block}{Test your password strength in bits}
