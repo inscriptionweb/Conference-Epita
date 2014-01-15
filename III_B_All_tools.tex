@@ -1,182 +1,81 @@
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
-\Huge{TOR - The Onion Router}
+\frametitle{Onion routing principles}
+\includegraphics[width=0.8\linewidth]{./materials/Tor_principles_Naam}
 \end{center}
 \end{frame}
 
 
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------
 \begin{frame}
-\frametitle{Présentation du réseau TOR}
-Tor est un logiciel libre,
+\frametitle{TOR : The Onion Router}
+It's an open-source implementation of the principles we just saw supported by
+The Tor Project.
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./materials/septical_boy}
+\end{figure}
+\end{frame}
+%---------------------------------------------------
+\begin{frame}
+\frametitle{TOR : The Onion Router}
+\begin{block}{Pros}
 \begin{itemize}
-\item grâce auquel existe le réseau d'anonymisation Tor
-\item  soutenu par l'organisation The Tor Project.
+\item Hide you identity and location, prevents from eyesdropping.
+\item Hide you browsing habits and act like a debrider on the informations that
+you're authorized to see.
+\item encrypt your (incom|outgo)ing traffic between nodes.
 \end{itemize}
-$\Rightarrow$ Techniquement, Tor nous permet de se connecter à des machines sur Internet via des relais. 
-\\$\Rightarrow$ Et cela de façon à ce qu'elles ne puissent pas identifier notre connexion (et donc de nous localiser).
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{A quoi sert TOR?}
-
-Concrêtement, ça sert pour :
+\end{block}
+\begin{block}{Cons}
 \begin{itemize}
-\item  échapper au fichage publicitaire,
-\item  publier des informations sous un pseudonyme,
-\item  accéder à des informations en laissant moins de traces,
-\item  déjouer des dispositifs de filtrage (dans sa fac, en Chine ou en Iran…),
-\item  communiquer en déjouant des dispositifs de surveillances,
-\item  tester son pare-feu,
-\item  … et sûrement encore d'autres choses.
+\item Slower connexion, forget about downloading big files, torrents
+(deanonymize effect) etc...
+\item Still vulnerable to some kind of analysis
+\\ (timing deduction or infection between applications).
+\item entry/exit nodes are vulnerables, no magic here.
+\\ (Partial solution if you setup an exit enclaving node)
 \end{itemize}
-$\Rightarrow$ Tor dispose également d'un système de « services cachés » qui permet de fournir un service en cachant l'emplacement du serveur.
+\end{block}
+TOR is an anonymity tool, not a security one.
 \end{frame}
 
-
-%----------------------------------------------------------------------------------------
+%---------------------------------------------------
 \begin{frame}
-\frametitle{A quoi sert TOR?}
-
-Tor est un réseau d'anonymisation, donc par définition, c'est difficile de faire un compte
-précis.Tor ne fait rien pour cacher que nous utilisons Tor. Donc quand en utilisant
-Tor, nous nous mettons au milieu de la foule des gens qui utilisent Tor. Plus
-cette foule est grande, meilleur est l'anonymat.
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Comment fonctionne Tor ?}
-\begin{center}
-\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{./materials/tor-safe-selection}
-\end{center}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Comment fonctionne Tor ?}
-\begin{center}
-\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{./materials/tor-safe-path}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Comment fonctionne Tor ?}
-\begin{center}
-\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{./materials/tor-keys1}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Comment fonctionne Tor ?}
-
-Ce tunnels se fait « en oignon » avec des couches de chiffrement empilées. Il y a une première
-clé de chiffrement vers le nœud d'entrée, une second clé vers le nœud du milieu et
-une dernière pour le nœud de sortie.
-\\
-Il faut noter que Tor ne s'occupe pas de chiffrer après le nœud de sortie. Comme n'importe
-qui peut mettre en place un nœud de sortie, c'est une bonne idée de chiffrer sa communication
-en plus (par exemple en se connectant aux sites web que l'on visite en HTTPS).
-\\
-Après, se déroule tout un processus pour établir un tunnel chiffré jusqu'au
-nœud de sortie.
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Utiliser Tor - Le Tor Browser}
-
-Le Tor Browser est une version Extended Support de Firefox, auxquelles sont ajoutée les extensions préconfigurées permettant qu’au lancement du navigateur, celui-ci se connecte à Tor. 
-\\$\Rightarrow$  Ainsi, toute la navigation qui se fait via ce navigateur est faite au travers du réseau Tor. 
-\\$\Rightarrow$ C’est simplissime.
-
-Toutes les versions (dans différentes langues, différents OS) sont disponibles sur le site du projet : https://www.torproject.org/projects/torbrowser.html
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Le Tor Browser}
-\begin{center}
+\frametitle{If you use it, do it smartly}
+\begin{columns}[c]
+\column{.5\textwidth}
+\begin{itemize}
+\item don't use standalone TOR or Vidalia bundlle
+\item prefer the use of the TBB (Tor Browser Bundle)
+\item or even better : tails (live Debian), in hostile environment
+(public places etc)
+\end{itemize}
+\column{.5\textwidth}
 \includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{./materials/tbb}
-\end{center}
+\end{columns}
+Try Tor browser launcher for your distribution, that keep TBB updated. Grab-it
+from here :\\ https://github.com/micahflee/torbrowser-launcher
 \end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Tor Browser Launcher}
-Pour avoir un Tor Browser toujours à jour, on peut installer le Tor Browser Launcher.
-https://github.com/micahflee/torbrowser-launcher
-\\
-Il gère : 
-\begin{itemize}
-\item le téléchargement de la version la plus récente de TBB, dans votre langue et pour votre architecture
-\item la mise à jour automatique (tout en conservant vos signets et préférences) manuel
-\item la vérification de la signature GnuPG du TBB (pour être sûr de l’intégrité des fichiers)
-\item ajoute un lanceur d’application "Tor Browser" dans le menu de votre environnement de bureau.
-\end{itemize}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Utiliser Tor - Tails}
-
-Tails est un système d'exploitation complet basé sur Linux et Debian, en live.
-\begin{center}
-\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{./materials/tails}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Tor hidden service - les services cachés de TOR}
-
-Tor permet aux clients et aux relais d’offrir des services cachés.Il est possible d'offrir un serveur web, un serveur SSH, etc, sans révéler son adresse IP aux utilisateurs.
-\begin{itemize}
-\item Tous ces sites ne sont accessibles que via le réseau Tor.
-\item Ils portent une adresse qui se termine par .onion.
-\item Des wikis et moteurs de recherches référencient ces services.
-\end{itemize}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Soutenir Tor}
-
-Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor financés par la communauté.
- https://nos-oignons.net
-\begin{itemize}
-\item En parler
-\item Faire un don
-\item Mettre en place un relais
-\end{itemize}
-\end{frame}
-
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
-\Huge{Sur Internet, si c'est gratuit, c'est vous le produit }
+\Huge{If it's free, then you're the product}
 \end{center}
 \end{frame}
 
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Qu'est-ce que le pistage ?}
+\frametitle{What is the tracking?}
 
-
-\begin{block}{Le pistage sur Internet}
+\begin{block}{Tracking over the Internet}
 \begin{itemize}
 \justifying{
-\item Le pistage est un terme qui comprend des méthodes aussi nombreuses et variées que les sites web, les annonceurs et d'autres utilisent pour connaître vos habitudes de navigation sur le Web. 
-\item  Cela comprend des informations sur les sites que vous visitez, les choses que vous aimez, n'aimez pas et achetez. 
-\item Ils utilisent souvent ces données pour afficher des pubs, des produits ou services spécialement ciblés pour vous. 
+\item websites, announcers use it to learn your browsing habits.
+\item they save what website are you visiting, what do you like or not and
+what you buy.
+\item Data are processed in order to display the best ads that fit your
+preferences.
 }
 \end{itemize}
 \end{block}
@@ -185,15 +84,15 @@ Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor fin
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Comment est-on tracké?}
+\frametitle{What's the magic?}
 
 \justifying{
-\begin{block}{Toutes les publicités nous espionnent}
+\begin{block}{Ads and widget are spying you}
 \begin{itemize}
-\item Le bouton Like de Facebook : il permet à FaceBook de savoir que vous avez visité ce site, même si vous n'avez pas cliqué sur ce bouton.
-\item Même si vous vous êtes correctement déconnecté de Facebook.
-\item De même pour le bouton le +1 de Google, les scripts de Google Analytics, 
-\item Tous les publicité, Amazon...
+\item The Like button : allows FaceBook to know what you visit, even if you
+don't click on it, even if you are properly disconnected from Facebook.
+\item Same for the +1 by Google, and Google Analytics script.
+\item In fact every ads and many widget do it.
 \end{itemize}
 \end{block}
 }
@@ -202,90 +101,106 @@ Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor fin
 \end{center}
 \end{frame}
 
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{L'extension Firefox LightBeam (ex Collusion)}
-Cette extension permet de voir en temps réel qui nous traque et les interconnexions qu'a le site actuellement visité avec d'autres sites.
+\frametitle{Want to test? Try LightBeam (ex Collusion) with Firefox}
+That add-on allow you to see in real time which websites are tracking you
+and the inter-connexion between the actual website and others. Kind of weird
+sometime.
 \begin{center}
-\includegraphics[scale=0.3] {./materials/Collusion.png}
+\includegraphics[scale=0.3] {./materials/lightbeam}
 \end{center}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\begin{center}
-\Huge{Anomymat et extensions pour Firefox}
-\end{center}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Noscript}
-
-Bloque tous les trackers associés au site.
-
-\begin{center}
-
-\end{center}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Self destructing cookie}
-
-Suppression automatisée des cookies
-
-\begin{center}
-\includegraphics[scale=0.4] {./materials/selfdestructingcookie.png}
-\end{center}
+\frametitle{Firefox scripts : Ghostery}
+Block all trackers Bloque tous les trackers associés au site.\\
+\includegraphics[width=0.9\textwidth]{./materials/ghostery}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\begin{center}
-\Huge{Changer de moteur de recherche}
-\end{center}
-\end{frame}
+\frametitle{Firefox scripts : Self destructing cookie}
 
+\begin{columns}[c]
+\column{0.5\linewidth}
+Automatic cookie deletion techniques. Prevent tracking and spying.
+Possibility to setup a whitelist if you really want to keep cookie for some
+domains even if you're not currently using it.
+\column{0.5\linewidth}
+\includegraphics[width=\linewidth] {./materials/selfdestructingcookie.png}
+\end{columns}
+\end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\begin{center}
-\frametitle{Duckduckgo - Google tracks you. We don't.}
-
-\url{https://duckduckgo.com/}
+\frametitle{Firefox scripts : HTTPSEverywhere}
+\begin{columns}[c]
+\column{.5\linewidth}
+Made by the electronic frontier fondation (EFF), it force the HTTPS when
+available on the website. If you have one, consider registering it for your
+visitors (see https://www.eff.org/https-everywhere/rulesets).
 \\
-\includegraphics[scale=0.4] {./materials/DuckDuckGo.jpg}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\begin{center}
-\Huge{Et pour plus de sécurité?}
-\end{center}
-\end{frame}
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{HTTPSEverywhere}
-
-Force le passage en https quand celui-ci est proposé par le site.
-
-\begin{center}
-\includegraphics[scale=0.4] {./materials/https-everywhere.jpg}
-\end{center}
+Also, activate the SSL Observatory : it prevent from MITM attacks and more
+generally against corrupted certificates.
+\column{.5\linewidth}
+\includegraphics[scale=0.4] {./materials/meme_httpseverywhere}
+\end{columns}
 
 \end{frame}
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Certificate Patrol}
-Permet de valider les certificats d'un site (lié à https).
+\frametitle{Firefox scripts : Certificate Patrol}
+Does approximately the same thing than the SSLObservatory. Less transparent in
+everyday use.
 \begin{center}
 \includegraphics[scale=0.4] {./materials/CertificatePatrol.png}
 \end{center}
 \end{frame}
-
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Search engines}
+\begin{itemize}
+\item Duckduckgo (ddg.gg) personalizable interface for your needs.
+\item Ixquick/startpage (ixquick.com/startpage.com) more than one search engine
+begind, automatic proxy if you want to.
+\item binsearch (binsearch.info) search for binaries (newsgroups etc) that
+google is hidding from you.
+\end{itemize}
+\end{frame}
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Metadatas are evil}
+\begin{block}{Definition (http://dictionary.reference.com/browse/meta-data)}
+\begin{itemize}
+\item Data about data.
+\item information that is held as a description of stored data.
+\end{itemize}
+\end{block}
+\begin{block}{Examples}
+\begin{itemize}
+\item EXIF tags on photography (Date, cameras info, GPS coordinates...)
+\item data stored on documents like .doc(x)
+\item ...
+\end{itemize}
+\end{block}
+\end{frame}
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Solution? YES, partialy}
+There is a good tool to erase metadatas from a large spectrum of filetypes.
+It's called MAT (mat.boum.org).
+\begin{itemize}
+\item Reside in Tails, standalone package (Debian), Git repos.
+\item it has a GUI, no worry (can also be used in command line, don't
+ worry too).
+\end{itemize}
+Files support :
+\begin{itemize}
+\item Images : .png, JPEG (.jpg, .jpeg, …)
+\item Documents : .odt, .odx, .ods, …, .docx, .pptx, .xlsx, …, .pdf
+\item Tape ARchives (.tar, .tar.bz2, …)
+\item Media : .mp3, .mp2, .mp1, …, .ogg, …, .flac
+\item Torrent (.torrent)
+\end{itemize}
+\end{frame}
