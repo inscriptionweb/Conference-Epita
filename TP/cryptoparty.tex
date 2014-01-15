@@ -1,0 +1,295 @@
+%
+% Nahim 'Naam' El Atmani
+% ven 17 janvier 2014
+%
+
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{fixltx2e}
+\usepackage{nth}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\lhead{{\sc{Chiffrement et anonymat}}\\ {\sc Cryptoparty} - 17 jan. 2014}
+\rhead{{\small \sc{GConfs}}\\ {\sc Epita}}
+\rfoot{\includegraphics[width=0.15\linewidth]{gconfs.png}}
+
+\begin{document}
+\begin{center}
+{\Large
+    {\bf Cryptoparty / Chiffro-fête, party like it's
+            \textsc{1984}\protect\footnote{Questions, remarques, et plaintes à
+    \url{naam@riseup.net}, (E-mail, XMPP)}
+   }
+}
+\end{center}
+
+\bigskip
+
+\section*{Introduction\protect\footnote{\url{http://www.cryptoparty.in/\#what\_is\_cryptoparty}}}
+
+Durant cette nuit vous allez apprendre à manipuler de nombreux logiciels
+présentés précédemment pendant la conférence. Il est préférable d'avoir son
+propre matériel pour suivre l'ensemble des manipulations, cependant votre rack
+fera l'affaire du moment que vous ne laissez pas derrière vous des informations
+aussi sensibles telle que vos paires de clefs \textsc{GPG}. Vous allez donc créer votre
+identité au sein du \textsc{wot\protect\footnote{\url{https://en.wikipedia.org/wiki/Web_of_trust}}}
+part la création d'une paire de clef GPG particulière. Vous manipulerez
+plusieurs clients reposant sur le protocol XMPP afin de mettre en place des
+moyens de conversation sécurisés respectant le principe de conversation
+\textsc{otr\protect\footnote{\url{https://otr.cypherpunks.ca/otr-codecon.pdf}}}
+(i.e confidentielles,officieuses).
+
+\section{GnuPG alias GPG}
+
+\subsection{Création de clefs}
+
+Dans cette section nous allons générer une paire de clefs afin de pouvoir
+chiffer fichiers, mail ou tout autre données pour un ou plusieurs
+interlocuteurs. En effet le protocole permet d'envoyer une donnée chiffrée à
+plusieurs personnes en même temps en spécifiant ces derniers lors du
+chiffrement. Nous verons cela dans une prochaine sous-section.
+La principale vulnérabilité du protocole réside dans la faiblesse de la clef
+maître, si celle-ci est compromise c'est pratiquement un \emph{game over}.
+Pour se prevenir d'une telle situation il convient de faire attention à sa clef
+maître en l'isolant quand nous n'en n'avons pas besoin, c'est à dire la pluspart
+du temps. Nous allons donc dissocier cette clef maître de ses sous-clefs et
+nous les réassocierons uniquement en cas de besoin.
+
+Par defaut \textsc{GPG} créer une sous-clef de signature (signing subkey) et
+une sous-clef de chiffrement (encryption subkey). Ce que nous allons faire est
+d'ajouter une sous clef de signature au trousseau de clef. Cette nouvelle
+sous-clef est directement liée à la première sous clef de signature. Ce triplet
+de clef constitut votre trousseau de clefs maître. Vous \textbf{devez} en prendre grand
+soin si vous ne voulez pas que les conséquences soient désastreuses plus tard.
+\\
+Pour créer votre clef sous unix procédez comme suit :
+\begin{verbatim}
+# gpg --gen-key
+gpg (GnuPG) 2.0.22; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 1
+\end{verbatim}
+
+Sélectionnez le choix par défault (1). On vous demande par la suite la taille
+de la clef, aujourd'hui on considère que 4096bits suffisent mais ne prenez pas
+moins. Sachez aussi que plus la clef est grande, plus les opérations de
+chiffrements sont longues et couteuses pour le processeur.
+\newpage
+Vous devez maintenant choisir la durée de vie de votre paire de clef. Il est
+important de ne pas choisir une durée de vie illimité, les raisons en sont
+nombreuses. Mais nous pouvons citer le fait qu'une clef périmable peut être
+renouvelée si cela est fait avant la date de péremption, donc techniquement elle
+a aussi une durée de vie illimité tant que vous le voulez vraiment.
+Cela renforce également la sécurité de la clef dans le pire des cas possible,
+à savoir que votre clef est compromise et vous l'ignorez.
+
+Pour l'avant dernière étape on vous demande d'entrer l'identité principale liée
+à la paire de clef. Tout dépend de l'utilisation que vous voulez en faire, il
+vous revient le choix d'un pseudonyme (cf le pseudonymat abordé lors de la
+conférence) ou d'une identitée bien définie. Sachez cependant que vous aurez
+plus de facilité à développer votre \textsc{WOT} par la suite avec une idendité
+vérifiable.
+
+\begin{verbatim}
+    Real name: Ted Laparty
+    E-mail address: ted@uracuire.org
+    Comment:
+    You selected this USER-ID:
+        "Ted Laparty <ted@uracuire.org>"
+\end{verbatim}
+
+La prochaine étape est de loin la plus importante puisqu'elle fait partie
+intégrante de la force de votre clef maître. Il s'agit de choisir sa phrase
+de pass (ou passphrase). Rappelez vous de la méthode
+diceware\protect\footnote{\url{http://world.std.com/~reinhold/diceware.html}} %}\protect\footnote{\link{http://bit.ly/1dOjZW4}}}
+pour ce faire!
+\\
+Vous pouvez ajouter une photographie à la clef si vous le souhaitez afin de
+faciliter votre identification lors de l'étape de signature de votre clef par
+vos interlocuteurs.
+
+\begin{verbatim}
+    # gpg --edit-key ted@uracuire.org
+    gpg>  addphoto
+    Enter JPEG filename for photo ID: /home/Ted/me.jpg
+    gpg> save
+\end{verbatim}
+
+Dernière chose, il reste quelques optimisations que nous pouvons faire sur
+notre clef avant de la distribuer et de l'utiliser. Il s'agit de choisir ses
+algorithmes de hash de notre
+clef\protect\footnote{\url{http://www.linux-magazine.com/Online/Features/Protect-your-Documents-with-GPG}}
+
+\begin{verbatim}
+    # gpg --edit-key ted@uracuire.org
+    gpg> setpref SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+    Set preference list to:
+        Cypher: AES256, AES192, AES, CAST5, 3DES
+        Digest: SHA512, SHA384, SHA256, SHA224, SHA1
+        Compression: ZLIB, BZIP2, ZIP, Uncompressed
+        Features: MDC, Keyserver no-modify
+    Really update the preferences? (y/N) y
+    // Entrer votre phrase de passe.
+    gpg> save
+\end{verbatim}
+
+Maintenant que l'on a ce trousseau maître nous pouvons signer, chiffrer et
+déchiffrer des mails. Cependant nous avons discuté de la dangerosité de porter
+sur soit sa clef maître dans la vie de tout les jours, c'est pourquoi nous
+allons créer une nouvelle sous clef pour signer et dissocier la clef principale
+de ce trousseau de clef. Ceci a pour conséquence de limiter la portée du
+problème dans un mauvais scénario. C'est précisément ce nouveau trousseau de
+clefs que vous emportez sur votre ordinateur portable tandis que vous laissez
+votre clef maître dans un/plusieurs périphériques de stockage mis en lieux sûr.
+Vous pouvez aussi appliquer les principes de chiffrement de disque pour la
+mettre dans un conteneur chiffré, ce qui aurait pour but de renforcer la
+sûreté autour de cette clef.
+
+\begin{verbatim}
+    # gpg --edit-key ted@uracuire.org
+    gpg> addkey
+\end{verbatim}
+Choisissez la clef RSA pour signer : \textbf{RSA (sign only)}
+\newpage
+Il est de bon usage de créer un certificat de révocation juste après avoir
+fabriqué sa clef de façon à pouvoir en faire une sauvegarde immédiatement
+plutôt que d'oublier de le faire et d'être embêter le jour où par malheur nous
+en avions besoin.
+
+\begin{verbatim}
+    # gpg --output \<ted@uracuire.org\>.gpg_revoke_cert --gen-revoke ted@uracuire.org
+\end{verbatim}
+Prenez garde, il est d'usage de ne pas sauvegarder votre clef de révocation à
+côté de votre clef maître. Pour la simple et bonne raison que si Mallory met la
+main sur ce certificat il peut révoquer votre clef, dans ce cas plus personne
+ne pourra vous écrire en utilisant votre clef publique. Ainsi c'est toute votre
+identité qui s'écroule.
+\\
+Nous allons maintenant sauvegarder le tout avant de supprimer la clef maitre
+pour fabriquer le trousseau de clef portatif.
+
+\begin{verbatim}
+    # gpg --export-secret-keys --armor ted@uracuire.org > \<ted@uracuire.org\>.gpg_private_key
+    # gpg --export --armor ted@uracuire.org > \<ted@uracuire.org\>.gpg_public_key
+\end{verbatim}
+
+Ce sont ces trois précédents fichiers que vous \textbf{devez} sauvegarder!
+Une fois cela fait n'oubliez pas de les supprimer correctement (shred)
+\\
+Supprimons cette clef maître si dangereuse ! Pour cela on exporte d'abord
+l'intégralité de nos sous-clefs (3) puis on supprime la sous clef originale qui
+nous servait à signer. Finalement on réimporte nos sous-clefs et on dispose
+enfin de ce fameux trousseau de clef portable.
+
+\begin{verbatim}
+    # gpg --export-secret-subkeys ted@uracuire.org > tmp_subkeys.asc
+    # gpg --delete-secret-key ted@uracuire.org
+    # gpg --import tmp_subkeys.asc
+    # gpg shred --remove tmp_subkeys.asc
+\end{verbatim}
+Si shred n'est pas installé sur votre système et que pour une raison obscure
+vous ne pouviez l'obtenir utilisez un rm simple, ce qui est \emph{fortement
+déconseillé}.
+
+Vous pouvez vérifier que tout s'est passé correctement en demandant à \textsc{GPG}
+de vous afficher l'ensemble des clefs dans le trousseau de clef (Keyring) :
+\begin{verbatim}
+    # gpg -K
+      /home/bilbo/.gnupg/secring.gpg
+      -----------------------------
+      sec# 4096R/XXXXXXXX 2014-01-17
+      uid Ted Laparty <ted@uracuire.org>
+      ssb 4096R/XXXXXXXX 2014-01-17
+      ssb 4096R/XXXXXXXX 2014-01-17
+\end{verbatim}
+Vous noterez que le \textbf{\#} signifie que gpg ne dispose pas de la clef privée correspondante.
+C'est ce que nous voulions. Lorsque vous voulez signer la clef de quelqu'un
+vous devez aller chercher votre clef maître jalousement gardée, pour le reste
+l'utilisation est similaire à la méthode classique.
+\newpage
+\subsection{Révoquer sa clef GPG}
+
+Dans le cas où celà vous arriverai d'avoir besoin de le faire, voici les
+instructions pour récupérer votre trousseau maître et révoquer vos clefs.
+Tout d'abord on reconstruit sont trousseau de clef de la façon suivante :
+\begin{verbatim}
+    # gpg --import /home/Ted/.../\<ted@uracuire.org\>.gpg_private_key
+    # gpg --edit-key ted@uracuire.org
+    gpg> key 1
+    gpg> key 2
+    gpg> revkey
+
+    Do you really want to revoke the selected subkeys? (y/N) y
+    Please select the reason for the revocation:
+      0 = No reason specified
+      1 = Key has been compromised
+      2 = Key is superseded
+      3 = Key is no longer used
+      Q = Cancel
+    Your decision? 1
+    Enter an optional description; end it with an empty line:
+    >
+    Reason for revocation: Key has been compromised
+    (No description given)
+    Is this okay? (y/N) y
+
+    gpg>save
+\end{verbatim}
+
+Notez que si vous n'êtes pas sur votre ordinateur vous avez aussi besoin d'importer
+votre clef publique!
+
+\subsection{Partager de clefs}
+Vous avez plusieurs moyens de partager votre paire de clef, il y à bien
+entendu la méthode de l'échange en face à face qui reste la meileure et l'upload
+sur votre page web ou sur des keyserver. Ces derniers sont des serveurs qui
+se rétropropagent les informations à propos des clefs que vous leur fournissez.
+Pour être plus clair, si vous envoyer une clef sur le keyserver suivant
+\url{gpg.mit.eu} il sera presque instantanément disponible sur de nombreux autres
+serveur. Cependant pour débuter ce n'est pas la méthode de choix, car vous
+\textbf{ne pouvez pas supprimer} votre clef du serveur, ni même avoir aucun droit de
+modification directe dessus. Aussi, si vous avez construit une paire de clef
+de durée illimité,
+que vous l'avez ensuite uploadé sur un keyserver puis que vous avez finalement
+perdu votre certificat de révocation alors celle-ci demeurrera pour toujours
+sur les serveur. Ce qui augmente les chances que vos correspondants se trompent
+en vous écrivant en l'envoyant à l'adresse pour laquelle vous n'avez plus aucun
+contrôle.
+Aussi nous ne n'irons pas plus loin dans l'enregistrement des clefs sur les
+keyserver pour éviter les erreurs que beaucoup font y compris moi\footnote{\url{http://pgp.mit.edu/pks/lookup?search=naam92160\%40gmail.com\&op=index}}
+même. Si vous regardez la note vous pouvez observer que j'ai créer trois clefs
+dont deux que j'avais fabriqué il y à un moment pour tester et pour lesquelles
+j'ai eu le malheure de ne pas avoir créer de certificat de révocation
+immédiatement après leur création.
+\\
+En revanche pour importer la clef de quelqu'un la démarche est plus facile,
+vous devez procéder exactement comme lorsque vous importer votre clef privée
+lorsque vous voulez révoquer une sous clef. Depuis les keyserver (cette fois
+sans risques) nous devons chercher le destinataire puis l'importer. Pour cela
+on procédera comme suit si nous cherchons Ted et que nous connaissons son email :
+\begin{verbatim}
+    # gpg --search-keys ted@uracuire.org
+\end{verbatim}
+Le serveur vous retourne les possibles clefs suivant votre recherche et vous
+devez lui indiquer le numéro de la clef que vous voulez importer. C'est tout!
+
+\subsection{Chiffrer}
+Venons en à ce pourquoi nous avons fait tout ceci. Pour chiffrer un fichier et
+ceci peut importe le type (document, image, texte brut...) vous devez
+rensseigner un ou plusieurs destinataires se trouvant dans votre trousseau de
+clefs.
+\end{document}
