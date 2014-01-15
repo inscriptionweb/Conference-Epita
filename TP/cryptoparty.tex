@@ -284,12 +284,114 @@ on procédera comme suit si nous cherchons Ted et que nous connaissons son email
 \begin{verbatim}
     # gpg --search-keys ted@uracuire.org
 \end{verbatim}
-Le serveur vous retourne les possibles clefs suivant votre recherche et vous
-devez lui indiquer le numéro de la clef que vous voulez importer. C'est tout!
+Le serveur vous retourne les possibles clefs suivant votre recherche (nom,
+email, \textsc{KEYID}). Pour l'importer vous devez devez lui indiquer le numéro
+de la clef que vous avez choisis parmis les résultats. C'est tout!
 
+Si on vous donne la clef en main propre vous pouvez procéder comme suit:
+\begin{verbatim}
+    # gpgp --import ted.gpg_public_key
+\end{verbatim}
+En toute logique n'acceptez pas de clefs envoyées par mail! Du moins pas tant
+que ceux cis ne sont pas eux-même chiffrés \textbf{et signés}.
+\newpage
 \subsection{Chiffrer}
 Venons en à ce pourquoi nous avons fait tout ceci. Pour chiffrer un fichier et
 ceci peut importe le type (document, image, texte brut...) vous devez
 rensseigner un ou plusieurs destinataires se trouvant dans votre trousseau de
-clefs.
+clefs. Si vous ne spécifiez pas de fichier en entrée \textsc{GPG} va lire
+le texte à chiffrer directement depuis la console. Voici comment chiffrer un
+message pour Ted :
+\begin{verbatim}
+    # gpg --encrypt mon_mail.txt --recipient ted@uracuire.org
+\end{verbatim}
+Encore une fois l'email peut être remplacé par tout identificateur de clef,
+c'est à dire un nom ou un ID. Cependant le nom n'est pas la meilleure solution
+bien que la plus simple au premier abord car il n'identifie pas de manière
+unique une clef et est plus prompt à faire une erreur sur le destinataire du
+mail par la suite.
+
+\subsection{Déchiffrer}
+Vous avez reçus un message ou un fichier \textsc{GPG} identifiable par son entête
+si celui-ci à été chiffré avec l'option \emph{armor}\protect\footnote{\url{http://gnupg.org/gph/en/manual/r1290.html}}
+ou par son extension (asc, gpg, pgp...).
+
+\textsc{GPG} est suffisemment intelligent pour détecter si vous disposez de la
+bonne clef dans votre trousseau pour la déchiffrer, inutile donc de chercher
+compliqué :
+
+\begin{verbatim}
+    # gpg --decrypt file.asc --output file.clear
+\end{verbatim}
+
+\subsection{Signer}
+La dernière chose que vous devez savoir faire avant d'être opérationel c'est
+de signer un message ou une clef. Signer une clef garanti que l'interlocuteur
+qui possède la clef que vous voulez signer se trouvant dans votre trousseau est
+bien cette personne. C'est à dire que vous faite confiance en cette personne
+ainsi qu'en ses capaciter à signer d'autres clefs. Nous nous contenterons de
+comment \textsc{GPG} gère de lui même les chaînes de confiance au début. Toutefois
+sachez qu'il existe plusieurs niveau de confiances que vous pouvez accorder à une
+clef, ce qui permet de faire des réglages plus fin. Par exemple vous avez
+totalement confiance dans la clef d'un membre de votre famille puisque vous
+l'avez générée avec lui, cependant vous doutez de ses capacités à signer
+correctement des clefs. Dans ce cas il existe un niveau de confiance bien adapté
+à votre situation.
+\\
+Pour signer la clef de Ted nous procéderons comme suit :
+
+\begin{verbatim}
+    # gpg --edit-key ted@uracuire.org
+    gpg> fpr
+    gpg> sign
+    gpg> save
+\end{verbatim}
+
+Ici \emph{fpr} est le diminutif de footprint, il vous permet de vérifier que la
+clef que vous avez récupéré a bien la même empreinte que celle que votre
+interlocuteur vous à donné à l'oral ou par écrit précédemment.
+Ne signez pas si les empreintes ne correspondent pas!
+\\
+Signer des clefs permet d'étendre sont réseau de confiance, le WOT. Mais comment
+faire pour que notre correspondant ai la certitude que la donnée chiffrée que
+nous transmettons est bien issue de notre démarche ? Nous allons signer les
+documents, comme vous signez un chèque pour attester que vous êtes le possesseur
+du chéquier. Pour cela on peut attacher la signature à la donnée ou la séparer
+de façon à avoir un fichier de signature et un fichier contenant la donnée.
+
+\begin{verbatim}
+    # gpg --output mail.sig --sign mail
+\end{verbatim}
+
+Pour attacher la signature au message dans le cas d'un mail par exemple vous
+procéderez de la manière suivante :
+\begin{verbatim}
+    # gpg --clear-sign mail
+\end{verbatim}
+\newline
+Ce qui aura pour effet de créer un texte de la sorte :
+\begin{verbatim}
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+this is a test
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+
+iQIcBAEBAgAGBQJS1u6HAAoJECP40hfpyw3Foo4P/AqnsKC2vdZsgnqqlp6MRIrI
+HpDF0zo0cBgZIWu/suh22VCEPfvyND4u2dKz/asD/uu/uNfMW6NbH3D0fVtzy6Sx
+lJPXCdkeMApQMCq9kVNDPp377sS+5/xdm70SAPnph0TQS6vTayYTJ/xCmSk7U22b
+/k/dzbciu+VqrnKdWJZhKTkRf5ObnirM3uW9RbUp8khPCm5dm89fVqGZtUPDA+IQ
+dyTTakOdFA2nziNDrUKByC1DZr+1uQVJJnzYapIi/pp/E3XQAj36mJ7GGz3OmqZC
+lALoIliPsMZy9Ax4DG1y+641LKTQLp70Lpxf1+RwoRd3J7DLTu9Zax8MMv7ubbRQ
+pdlT8Q9AbtNDmpRKSV2SueP2s+fgzDE+LDQ0I7A0B6owV1KYj/6MGxdYpESKbYUF
+2Z1G1o372wI9xFyhkKBNdASFK+NqtXsKNDynNdQk0mohWKpJo9uxWxxiICuyyccY
+PTyV2XwPLqiKEljDeS0cFfpC9o8iJSHW1XsioEb7iqYmbvTie+A/otDX7kC9LYXw
+Is+NqEfWeT4jhw5vfpO04DOfzBZajs3EScNhra1yWbkKxDmsMA2ZOWyTEkiVahQS
+p8hhlOl+lUr7PF+wlr4jRYZ2hNn/wsf+WqNy53nm9V7o6aTBd6/ErvhXCI4LvyNf
+hW5YfukiaaIKROvwfzoR
+=hNlH
+-----END PGP SIGNATURE-----
+\end{verbatim}
+
 \end{document}
