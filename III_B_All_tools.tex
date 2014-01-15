@@ -1,11 +1,20 @@
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
+\Huge{TOR the Onion router}
+\end{center}
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{./materials/tor.png}
+\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
 \frametitle{Onion routing principles}
 \includegraphics[width=0.8\linewidth]{./materials/Tor_principles_Naam}
 \end{center}
 \end{frame}
-
 
 %---------------------------------------------------
 \begin{frame}
@@ -46,8 +55,8 @@ TOR is an anonymity tool, not a security one.
 \begin{columns}[c]
 \column{.5\textwidth}
 \begin{itemize}
-\item don't use standalone TOR or Vidalia bundlle
-\item prefer the use of the TBB (Tor Browser Bundle)
+\item Don't use standalone TOR or Vidalia bundlle
+\item Prefer the use of the TBB (Tor Browser Bundle)
 \item or even better : tails (live Debian), in hostile environment
 (public places etc)
 \end{itemize}
@@ -60,7 +69,7 @@ from here :\\ https://github.com/micahflee/torbrowser-launcher
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
-\Huge{If it's free, then you're the product}
+\Huge{If it's free, \\then you're the product}
 \end{center}
 \end{frame}
 
@@ -81,7 +90,6 @@ preferences.
 \end{block}
 \end{frame}
 
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{What's the magic?}
@@ -89,10 +97,12 @@ preferences.
 \justifying{
 \begin{block}{Ads and widget are spying you}
 \begin{itemize}
+\justifying{
 \item The Like button : allows FaceBook to know what you visit, even if you
 don't click on it, even if you are properly disconnected from Facebook.
 \item Same for the +1 by Google, and Google Analytics script.
 \item In fact every ads and many widget do it.
+}
 \end{itemize}
 \end{block}
 }
@@ -104,18 +114,30 @@ don't click on it, even if you are properly disconnected from Facebook.
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Want to test? Try LightBeam (ex Collusion) with Firefox}
+
+\justifying{
 That add-on allow you to see in real time which websites are tracking you
 and the inter-connexion between the actual website and others. Kind of weird
 sometime.
+}
 \begin{center}
 \includegraphics[scale=0.3] {./materials/lightbeam}
+\end{center}
+\end{frame}
+
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Firefox}
+\begin{center}
+\huge{Firefox addons}
 \end{center}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Firefox scripts : Ghostery}
-Block all trackers Bloque tous les trackers associés au site.\\
+Block all trackers.\\
 \includegraphics[width=0.9\textwidth]{./materials/ghostery}
 \end{frame}
 
@@ -125,9 +147,10 @@ Block all trackers Bloque tous les trackers associés au site.\\
 
 \begin{columns}[c]
 \column{0.5\linewidth}
-Automatic cookie deletion techniques. Prevent tracking and spying.
+\justifying{Automatic cookie deletion techniques. Prevent tracking and spying.
 Possibility to setup a whitelist if you really want to keep cookie for some
 domains even if you're not currently using it.
+}
 \column{0.5\linewidth}
 \includegraphics[width=\linewidth] {./materials/selfdestructingcookie.png}
 \end{columns}
@@ -137,12 +160,14 @@ domains even if you're not currently using it.
 \frametitle{Firefox scripts : HTTPSEverywhere}
 \begin{columns}[c]
 \column{.5\linewidth}
+\justifying{
 Made by the electronic frontier fondation (EFF), it force the HTTPS when
 available on the website. If you have one, consider registering it for your
 visitors (see https://www.eff.org/https-everywhere/rulesets).
 \\
 Also, activate the SSL Observatory : it prevent from MITM attacks and more
 generally against corrupted certificates.
+}
 \column{.5\linewidth}
 \includegraphics[scale=0.4] {./materials/meme_httpseverywhere}
 \end{columns}
@@ -151,12 +176,23 @@ generally against corrupted certificates.
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Firefox scripts : Certificate Patrol}
+\justifying{
 Does approximately the same thing than the SSLObservatory. Less transparent in
 everyday use.
+}
 \begin{center}
 \includegraphics[scale=0.4] {./materials/CertificatePatrol.png}
 \end{center}
 \end{frame}
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Search engines}
+\begin{center}
+\huge{Google is not evil... Sure? (PRISM)}
+\end{center}
+\end{frame}
+
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Search engines}
@@ -168,6 +204,32 @@ begind, automatic proxy if you want to.
 google is hidding from you.
 \end{itemize}
 \end{frame}
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Metadatas are evil}
+\begin{center}
+\huge{Metadatas are evil}
+\end{center}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Metadatas are evil}
+\begin{center}
+\includegraphics[scale=0.5] {./materials/exif-metadata.jpg} 
+\end{center}
+\end{frame}
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Metadatas are evil}
+\begin{center}
+\includegraphics[scale=0.4] {./materials/Word01.jpg} 
+\includegraphics[scale=0.4] {./materials/Word02.jpg} 
+\end{center}
+\end{frame}
+
 %--------------------------------------------------
 \begin{frame}
 \frametitle{Metadatas are evil}
@@ -185,6 +247,16 @@ google is hidding from you.
 \end{itemize}
 \end{block}
 \end{frame}
+
+
+%--------------------------------------------------
+\begin{frame}
+\frametitle{Metadatas are evil}
+\begin{center}
+\includegraphics[scale=0.4] {./materials/Mat.png} 
+\end{center}
+\end{frame}
+
 %--------------------------------------------------
 \begin{frame}
 \frametitle{Solution? YES, partialy}

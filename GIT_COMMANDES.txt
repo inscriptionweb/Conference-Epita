@@ -1,0 +1,10 @@
+
+
+Conference_Guide_d_hygiene_numerique /
+
+
+git commit -m "Translation"
+git add Conclusion_Genma.tex
+git status
+git add Conclusion_Genma.tex
+git pull
