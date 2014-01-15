@@ -1,2 +1,2 @@
 all:
-	pdflatex ./slides.tex && mupdf ./slides.pdf&
+	pdflatex ./slides.tex && xpdf ./slides.pdf&

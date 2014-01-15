@@ -48,6 +48,15 @@ moyens de conversation sécurisés respectant le principe de conversation
 
 \section{GnuPG alias GPG}
 
+Les instructions suivantes sont données en ligne de commande car c'est la méthode qui
+offre le plus de flexibilité dans nos actions. Vous pouvez les executer sous UNIX/Linux comme sous Windows.
+Pour UNIX/Linux, gpg est en général déjà disponible. Pour windows vous installez \textsc{gpg4win}\protect\footnote{\url{www.gpg4win.org/}}
+en cochant l'option \emph{GPA} ce qui vous permettra d'avoir une interface graphique si la ligne de commande vous rend
+allergique. Cependant sachez que vous ne pourrez pas avoir exactement le même trousseau de clef que celui que nous allons générer.
+Au premier lancement de \emph{GPA} une fois celui-ci installé il vous est demandé si vous voulez générer une clef de suite. Indiquez que
+oui et suivez les instructions. Quand on vous demande si vous souhaitez sauvegarder la clef indiquez oui et faites en une copie. Référez
+vous aux instructions en ligne de commande pour plus de détails.
+
 \subsection{Création de clefs}
 
 Dans cette section nous allons générer une paire de clefs afin de pouvoir
@@ -69,7 +78,7 @@ sous-clef est directement liée à la première sous clef de signature. Ce tripl
 de clef constitut votre trousseau de clefs maître. Vous \textbf{devez} en prendre grand
 soin si vous ne voulez pas que les conséquences soient désastreuses plus tard.
 \\
-Pour créer votre clef sous unix procédez comme suit :
+Pour créer votre clef sous procédez comme suit :
 \begin{verbatim}
 # gpg --gen-key
 gpg (GnuPG) 2.0.22; Copyright (C) 2013 Free Software Foundation, Inc.
@@ -368,7 +377,6 @@ procéderez de la manière suivante :
 \begin{verbatim}
     # gpg --clear-sign mail
 \end{verbatim}
-\newline
 Ce qui aura pour effet de créer un texte de la sorte :
 \begin{verbatim}
 -----BEGIN PGP SIGNED MESSAGE-----
@@ -392,6 +400,21 @@ p8hhlOl+lUr7PF+wlr4jRYZ2hNn/wsf+WqNy53nm9V7o6aTBd6/ErvhXCI4LvyNf
 hW5YfukiaaIKROvwfzoR
 =hNlH
 -----END PGP SIGNATURE-----
+\end{verbatim}
+
+\section{TOR The onion router}
+Pour utiliser tor préférez installer le \textsc{TBB}\protect\footnote{\url{https://www.torproject.org/projects/torbrowser.html.en}},
+De cette manière vous ne risquez pas de laisser fuiter votre identité par un plug-in un peu trop bavard.
+Si, en revanche vous voulez utiliser tor pour un autre besoin que visiter des services web vous pouvez installer 
+Tor seul (Standalone) pour pour \textsc{UNIX/Linux}\protect\footnote{\url{https://www.torproject.org/download/download-unix.html.en}}
+ou pour Windows\protect\footnote{\url{http://www.01net.com/telecharger/windows/Securite/anonymat-vie-privee/fiches/35156.html}}.
+
+L'utilisation de TOR sans le bundle se fait comme l'accès à un service au travers d'un proxy. Vous devez configurer vos applications
+pour passer par le proxy en locale que Vidalia administre pour vous sous windows. Sous \textsc{unix/linus} il existe \emph{torsocks}
+dont l'utilisation est élémentaire :
+
+\begin{verbatim}
+    # usewithtor ping 8.8.8.8
 \end{verbatim}
 
 \end{document}
