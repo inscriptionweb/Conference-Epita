@@ -97,7 +97,6 @@ Sélectionnez le choix par défault (1). On vous demande par la suite la taille
 de la clef, aujourd'hui on considère que 4096bits suffisent mais ne prenez pas
 moins. Sachez aussi que plus la clef est grande, plus les opérations de
 chiffrements sont longues et couteuses pour le processeur.
-\newpage
 Vous devez maintenant choisir la durée de vie de votre paire de clef. Il est
 important de ne pas choisir une durée de vie illimité, les raisons en sont
 nombreuses. Mais nous pouvons citer le fait qu'une clef périmable peut être
@@ -377,6 +376,8 @@ procéderez de la manière suivante :
 \begin{verbatim}
     # gpg --clear-sign mail
 \end{verbatim}
+Notez que le contenu du message n'est pas chiffré !
+\newpage
 Ce qui aura pour effet de créer un texte de la sorte :
 \begin{verbatim}
 -----BEGIN PGP SIGNED MESSAGE-----
@@ -403,6 +404,7 @@ hW5YfukiaaIKROvwfzoR
 \end{verbatim}
 
 \section{TOR The onion router}
+\subsection{Installation}
 Pour utiliser tor préférez installer le \textsc{TBB}\protect\footnote{\url{https://www.torproject.org/projects/torbrowser.html.en}},
 De cette manière vous ne risquez pas de laisser fuiter votre identité par un plug-in un peu trop bavard.
 Si, en revanche vous voulez utiliser tor pour un autre besoin que visiter des services web vous pouvez installer 
@@ -410,11 +412,16 @@ Tor seul (Standalone) pour pour \textsc{UNIX/Linux}\protect\footnote{\url{https:
 ou pour Windows\protect\footnote{\url{http://www.01net.com/telecharger/windows/Securite/anonymat-vie-privee/fiches/35156.html}}.
 
 L'utilisation de TOR sans le bundle se fait comme l'accès à un service au travers d'un proxy. Vous devez configurer vos applications
-pour passer par le proxy en locale que Vidalia administre pour vous sous windows. Sous \textsc{unix/linus} il existe \emph{torsocks}
+pour passer par le proxy en locale que Vidalia administre pour vous sous windows. Sous \textsc{unix/linus} il existe \emph{torsocks}\protect\footnote{\url{http://code.google.com/p/torsocks/downloads/list}}
 dont l'utilisation est élémentaire :
 
 \begin{verbatim}
-    # usewithtor ping 8.8.8.8
+    # usewithtor <command> [arguments]
 \end{verbatim}
+Notez que selon votre installation, l'executable ci-dessus peut porter d'autres noms comme torify.
+
+Pour tester que votre installation fonctionne vous pouvez aller sur des sites comme\\
+\url{http://network-tools.com/} et vérifier que votre IP est bien différente de l'habituelle.
+
 
 \end{document}
