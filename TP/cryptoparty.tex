@@ -66,7 +66,7 @@ plusieurs personnes en même temps en spécifiant ces derniers lors du
 chiffrement. Nous verons cela dans une prochaine sous-section.
 La principale vulnérabilité du protocole réside dans la faiblesse de la clef
 maître, si celle-ci est compromise c'est pratiquement un \emph{game over}.
-Pour se prevenir d'une telle situation il convient de faire attention à sa clef
+Pour se prévenir d'une telle situation il convient de faire attention à sa clef
 maître en l'isolant quand nous n'en n'avons pas besoin, c'est à dire la pluspart
 du temps. Nous allons donc dissocier cette clef maître de ses sous-clefs et
 nous les réassocierons uniquement en cas de besoin.
@@ -103,7 +103,7 @@ nombreuses. Mais nous pouvons citer le fait qu'une clef périmable peut être
 renouvelée si cela est fait avant la date de péremption, donc techniquement elle
 a aussi une durée de vie illimité tant que vous le voulez vraiment.
 Cela renforce également la sécurité de la clef dans le pire des cas possible,
-à savoir que votre clef est compromise et vous l'ignorez.
+à savoir que votre clef est compromise et que vous l'ignorez.
 
 Pour l'avant dernière étape on vous demande d'entrer l'identité principale liée
 à la paire de clef. Tout dépend de l'utilisation que vous voulez en faire, il
@@ -175,7 +175,7 @@ Choisissez la clef RSA pour signer : \textbf{RSA (sign only)}
 \newpage
 Il est de bon usage de créer un certificat de révocation juste après avoir
 fabriqué sa clef de façon à pouvoir en faire une sauvegarde immédiatement
-plutôt que d'oublier de le faire et d'être embêter le jour où par malheur nous
+plutôt que d'oublier de le faire et d'être embêté le jour où par malheur nous
 en avions besoin.
 
 \begin{verbatim}
@@ -196,7 +196,7 @@ pour fabriquer le trousseau de clef portatif.
 \end{verbatim}
 
 Ce sont ces trois précédents fichiers que vous \textbf{devez} sauvegarder!
-Une fois cela fait n'oubliez pas de les supprimer correctement (shred)
+Une fois cela fait n'oubliez pas de les supprimer correctement (shred\protect\footnote{\url{http://linux.die.net/man/1/shred}}).
 \\
 Supprimons cette clef maître si dangereuse ! Pour cela on exporte d'abord
 l'intégralité de nos sous-clefs (3) puis on supprime la sous clef originale qui
@@ -261,10 +261,10 @@ Tout d'abord on reconstruit sont trousseau de clef de la façon suivante :
 Notez que si vous n'êtes pas sur votre ordinateur vous avez aussi besoin d'importer
 votre clef publique!
 
-\subsection{Partager de clefs}
+\subsection{Partage de clefs}
 Vous avez plusieurs moyens de partager votre paire de clef, il y à bien
-entendu la méthode de l'échange en face à face qui reste la meileure et l'upload
-sur votre page web ou sur des keyserver. Ces derniers sont des serveurs qui
+entendu la méthode de l'échange en face à face qui reste la meilleure solution et l'upload
+sur votre page web (déconseillé) ou sur des keyserver. Ces derniers sont des serveurs qui
 se rétropropagent les informations à propos des clefs que vous leur fournissez.
 Pour être plus clair, si vous envoyer une clef sur le keyserver suivant
 \url{gpg.mit.eu} il sera presque instantanément disponible sur de nombreux autres
@@ -281,7 +281,7 @@ Aussi nous ne n'irons pas plus loin dans l'enregistrement des clefs sur les
 keyserver pour éviter les erreurs que beaucoup font y compris moi\footnote{\url{http://pgp.mit.edu/pks/lookup?search=naam92160\%40gmail.com\&op=index}}
 même. Si vous regardez la note vous pouvez observer que j'ai créer trois clefs
 dont deux que j'avais fabriqué il y à un moment pour tester et pour lesquelles
-j'ai eu le malheure de ne pas avoir créer de certificat de révocation
+j'ai eu le malheur de ne pas avoir créer de certificat de révocation
 immédiatement après leur création.
 \\
 En revanche pour importer la clef de quelqu'un la démarche est plus facile,
@@ -409,7 +409,7 @@ Pratiquez, envoyez vous des mails, signez vos clefs!
 \subsection{Installation}
 Pour utiliser tor préférez installer le \textsc{TBB}\protect\footnote{\url{https://www.torproject.org/projects/torbrowser.html.en}},
 De cette manière vous ne risquez pas de laisser fuiter votre identité par un plug-in un peu trop bavard.
-Si, en revanche vous voulez utiliser tor pour un autre besoin que visiter des services web vous pouvez installer 
+Si, en revanche vous voulez utiliser \textsc{TOR} pour un autre besoin que visiter des services web vous pouvez installer 
 Tor seul (Standalone) pour pour \textsc{UNIX/Linux}\protect\footnote{\url{https://www.torproject.org/download/download-unix.html.en}}
 ou pour Windows\protect\footnote{\url{http://www.01net.com/telecharger/windows/Securite/anonymat-vie-privee/fiches/35156.html}}.
 
@@ -534,4 +534,8 @@ Le pseudo (\emph{Username}) correspond à votre pseudo facebook, facilement iden
 allez sur votre profil (il figure dans la barre d'adresse).
 \emph{Domain} doit correspondre à l'adresse du serveur de chat de facebook qui est
 \emph{chat.facebook.com}. Ne cochez pas la case \emph{Create this new account on the server}.
+\\
+Vous pouvez désormais chatter sur Facebook avec vos contact sans que Facebook
+procède à son habituel traitement de vos messages\protect\footnote{\url{http://news.cnet.com/8301-1023_3-57471570-93/facebook-scans-chats-and-posts-for-criminal-activity/}}.
+
 \end{document}
