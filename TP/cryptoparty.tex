@@ -403,6 +403,8 @@ hW5YfukiaaIKROvwfzoR
 -----END PGP SIGNATURE-----
 \end{verbatim}
 
+Pratiquez, envoyez vous des mails, signez vos clefs!
+
 \section{TOR The onion router}
 \subsection{Installation}
 Pour utiliser tor préférez installer le \textsc{TBB}\protect\footnote{\url{https://www.torproject.org/projects/torbrowser.html.en}},
@@ -423,5 +425,113 @@ Notez que selon votre installation, l'executable ci-dessus peut porter d'autres 
 Pour tester que votre installation fonctionne vous pouvez aller sur des sites comme\\
 \url{http://network-tools.com/} et vérifier que votre IP est bien différente de l'habituelle.
 
+\subsection{Les services cachés du réseau onion}
+Quand votre connexion passe par les noeuds \textsc{TOR} vous avez accès à ce qu'on
+appel les services cachés de \textsc{TOR}. Cela peut-être un accès SSH comme un
+serveur Web. Pour vérifier cela diriger vous directement vers le
+\emph{hiddenWiki}\footnote{\url{http://kpvz7ki2v5agwt35.onion/wiki/index.php/Main_Page}}
+ou la bibliothèque TOR (TOR Library\footnote{\url{http://am4wuhz3zifexz5u.onion/}}).
+Cependant la première chose que vous \textbf{devez absolument éviter} sont les sites relatant de
+près ou de loin à des affaires illégales ou à du CP\protect\footnote{\url{https://en.wikipedia.org/wiki/Child_pornography}}
+car en plus d'être odieusement malsain vous vous exposez sans le savoir à des possible poursuites judiciaire.
+\\
 
+Happy browsing !
+
+\section{MAT\protect\footnote{\url{https://mat.boum.org/}}}
+
+\subsection{GUI}
+
+L'interface est ultra-simpliste. Ajoutez simplement des fichiers à nettoyer
+avec le boutton \textbf{+}. Pour avoir la liste des fichiers supporté rendez vous sur le
+site officiel (\emph{cf la note de section}) où sur la slide correspondante.
+Si vous avez la curiosité de regarder le contenu des métas-données du document
+double-cliquez sur la ligne correspondante au document. Et n'oubliez pas de
+sélectionner l'ensemble des fichiers puis de lancer le nettoyage des métas-données
+avec le bouton \emph{clean} correspondant.
+
+\subsection{Ligne de commande}
+
+Pour afficher les métas-données contenues dans un fichier supporté par \textsc{MAT}
+procédez de la sorte :
+\begin{verbatim}
+    # mat -d cvta.docx
+\end{verbatim}
+
+Afin de ne pas avoir à vérifier avec l'option \textbf{-c} chaque document dans un répertoir
+avant de les nettoyer (\textbf{-d}) un par un vous pouvez simplement procéder
+de la façon suivante :
+
+\begin{verbatim}
+    # mat -f /path/to/folder/*
+\end{verbatim}
+
+Par defaut l'action de \textsc{MAT} sera de supprimer les méta-données d'un fichier
+donné en paramètre.
+
+\subsection{Exemple}
+Ted Laparty vient de recevoir un e-mail avec une photo de sa copine très compromettante,
+il décide de vérifier qui est à l'origine et l'intégrité de cette image gràce à
+\textsc{MAT}. Voici ce qu'il obtient en consultant les métas-données de la photographie :\\
+\begin{center}
+    \includegraphics[width=.7\textwidth]{./materials/dirty}
+        \end{center}
+Le voilà rassuré, il s'agit d'un montage fait par un de ses collègue de chez darkharbor.
+\newpage
+
+\section{Pidgin\protect\footnote{\url{https://pidgin.im/}} + OTR plugin}
+Pidgin est un client multi-protocolaire, il peut tout aussi bien gérer vos connections
+IRC que GTalk, Jabber (XMPP, facebook,...).
+Nous allons l'utiliser ici pour parler avec nos contacts facebook depuis Pidgin
+sans avoir lancer un navigateur. Sachez que les serveur de facebook proposant ce
+protocol sont identiques en tout points à ceux que vous trouverez ailleurs à la seule
+différence que vous êtes explicitement prévenu que l'historique de vos conversations
+est sauvegardée par soucis pratique (pour vous).
+Si vous êtes intéressé par la création d'un compte sur un serveur XMPP autres que
+ceux de facebook vous pouvez aller voir du côté de
+DuckDuckgo\protect\footnote{\url{https://duck.co/forum/thread/3703/howto-utiliser-le-service-de-messagerie-publique}}.
+
+\subsection{Le plugin OTR\protect\footnote{\url{https://otr.cypherpunks.ca/}}}
+Ce plugin permet d'ajouter à Pidgin les propriétés dont nous avons discuté pendant
+la conférence comme la \emph{perfect forward secrecy}.
+Il existe un binaire pour l'installer sous windows, rien de plus simple donc.
+Pour \textsc{UNIX/Linux} la page de cypherpunks\protect\footnote{\url{https://otr.cypherpunks.ca/index.php\#docs}}
+comporte des tutoriels suivant votre système d'exploitation.
+\\
+Une fois installé il reste une partie de configuration primordiale. Il faut tout
+d'abord activer le plugin, pour cela \emph{Tools->Plugins->Cochez le bon}
+\\
+Cliquez ensuite sur \emph{Config plugin} et cochez les options suivantes :
+\begin{itemize}
+        \item Enable private messaging
+        \item Automatically initiate private messaging
+        \item Don't Log \textsc{otr} conversations
+        \item show \textsc{otr} button in toolbar
+\end{itemize}
+Cliquez ensuite sur le bouton \emph{Generate} et validez.
+\\
+Une fois dans la fenêtre de chat vous pouvez démarrer la session privée en cliquant
+sur le bouton \emph{Not private} puis en sélectionnant \emph{Start private conversation}.
+Si votre correspondant dispose d'un client prenant en charge ce type de communication il
+va répondre automatiquement oui à votre demande et la communication est désormais chiffrée
+avec un status de type \textbf{unverified}. Ce qui signifie que vous n'avez pas encore
+vérifié l'identité de votre destinataire. Un peu comme si vous communiquiez par email
+avec \textsc{GPG} sans avoir signé la clef de votre correspondant. Autrement dit, c'est
+tout à fait possible mais non conseillé. Cliquez donc sur le bouton \emph{Unverified},
+anciènement \emph{Not private} puis sélectionnez une des trois possibilités qui s'offrent à vous :
+\begin{itemize}
+    \item Question / answer: C'est le même principe que pour un mot de passe perdu
+        auf que vous posez la question, définissez la réponse correcte mais c'est votre
+        destinataire qui va devoir y répondre correctement.
+    \item Shared secret : Équivalent d'une passphrase.
+    \item Manual : Sans vérification, autentification directe. À utiliser dans le cas
+        où vous avez la personne au téléphone par exemple.
+\end{itemize}
+
+\subsection{Relier Pidgin à votre compte Facebook}
+Pour ce faire créer un nouveau compte sur pidgin en tant que \emph{compte existant}.
+Le pseudo (\emph{Username}) correspond à votre pseudo facebook, facilement identifiable quand vous
+allez sur votre profil (il figure dans la barre d'adresse).
+\emph{Domain} doit correspondre à l'adresse du serveur de chat de facebook qui est
+\emph{chat.facebook.com}. Ne cochez pas la case \emph{Create this new account on the server}.
 \end{document}
